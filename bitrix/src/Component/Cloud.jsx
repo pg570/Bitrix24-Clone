@@ -3,7 +3,7 @@ import React from 'react'
 
 function Cloud() {
   return (
-    <div style={{height:'20vh', backgroundColor:'#409eef',
+    <div style={{height:'18vh', backgroundColor:'#409eef',
     display:'flex', justifyContent:'center',alignItems:'center',gap:'20px',color:'white'
     }}>
 

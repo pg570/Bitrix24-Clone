@@ -2,3 +2,6 @@
     background-color: #BDF300 
     /* #a6f300; */
 }
+.texthover:hover{
+    color: rgb(50, 203, 250);
+}
