@@ -29,13 +29,13 @@ function Navbar() {
 
         <Box style={{display:'flex', justifyContent:'center', gap:'25px', alignItems:'center'}}>
 
-          <Link to=''><Text  as='b'>TOOLS</Text></Link>
-          <Link to=''><Text as='b'>PRICING</Text></Link>
-          <Link to=''><Text as='b'>SOLUTIONS</Text></Link>
-          <Link to=''><Text as='b'>PARTNERS</Text></Link>
-          <Link to=''><Text as='b'>APPS</Text></Link>
-          <Link to=''><Text as='b'>BLOGS</Text></Link>
-          <Link to=''><Text as='b'>SUPPORT</Text></Link>
+          <Link to='/tools'><Text as='b' className='texthover'>TOOLS</Text></Link>
+          <Link to='/pricing'><Text as='b' className='texthover'>PRICING</Text></Link>
+          <Link to=''><Text as='b' className='texthover'>SOLUTIONS</Text></Link>
+          <Link to=''><Text as='b' className='texthover'>PARTNERS</Text></Link>
+          <Link to=''><Text as='b' className='texthover'>APPS</Text></Link>
+          <Link to=''><Text as='b' className='texthover'>BLOGS</Text></Link>
+          <Link to=''><Text as='b' className='texthover'>SUPPORT</Text></Link>
           
 
 

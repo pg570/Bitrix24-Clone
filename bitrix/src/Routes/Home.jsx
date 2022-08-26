@@ -3,6 +3,8 @@ import React from 'react'
 import Cloud from '../Component/Cloud'
 import Footer from '../Component/Footer'
 import Navbar from '../Component/Navbar'
+import Much from '../Component/Much'
+import Premisehome from '../Component/Premisehome'
 import Press from '../Component/Press'
 
 function Home() {
@@ -11,8 +13,10 @@ function Home() {
   
         <Navbar />
         <Cloud />
+        <Much />
         <Press />
-
+        <hr />
+        <Premisehome />
 
         <Footer />
 
