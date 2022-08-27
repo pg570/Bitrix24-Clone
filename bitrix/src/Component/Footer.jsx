@@ -4,10 +4,10 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div style={{backgroundColor:'#409eef'}}>
+    <div style={{backgroundColor:'#409eef', padding:'40px'}}>
         
 
-        <Flex color='white'  direction='row' justifyContent='space-between' p={10} w='80%' margin='auto'>
+        <Flex color='white'  direction='row' justifyContent='space-between' p={5} w='80%' margin='auto'>
             <Box align='left'>
                 <Text color='#ebeff2'>BITRIX</Text>
                     <Stack spacing={4} mt={2}>

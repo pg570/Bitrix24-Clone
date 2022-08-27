@@ -1,18 +1,37 @@
 import { Box, Button, Image, Text,  } from '@chakra-ui/react'
 import React from 'react'
+import { useContext } from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../Context/AuthContext'
 import "../CSS/Navbar.css"
 
 function Navbar() {
-  return (
-    <div style={{height:'12vh', 
-    boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px',
-    padding:'5px',
-    display:'flex',
-    justifyContent:'space-around',
-    alignItems:'center'
 
+  const [user, setUser] = useState({});
+  const { isAuth } = useContext(AuthContext)
+
+  useEffect(()=>{
+    setTimeout(() => (getUser()) , 2000)  
+  },[])
+
+  function getUser(){
+    fetch('https://damp-ravine-71862.herokuapp.com/profile').then(res=> res.json()).then((data) => setUser(data.name))
+  }
+
+  console.log(user)
+  console.log(isAuth)
+
+  return (
+    <div style={{
     
+    height:'10vh', 
+    boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px',
+    padding:'15px',
+    display:'flex',
+    justifyContent:'space-between',
+    alignItems:'center'
     }}>
 
 
@@ -65,7 +84,8 @@ function Navbar() {
             gap="8px"
             >
               <i class="fa-solid fa-user" color='black'></i> 
-              LOGIN</Button>
+              LOG IN
+               </Button>
             </Link>
             
      

@@ -1,9 +1,44 @@
-import React from 'react'
+import React, {  useContext, useState } from 'react'
 import 
 { Box, Flex, Image, Input, Text} from "@chakra-ui/react"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../Context/AuthContext';
 
 function Login() {
+
+  const {toggle}  = useContext(AuthContext);
+    const [formState, setFormState] = useState({
+        name: "",
+        password: ""
+      });
+
+      const navigate = useNavigate();
+
+      function handleChange(e) {
+        const { name, value } = e.target;
+        setFormState({
+        ...formState,
+        [name]: value
+        });
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      fetch("https://damp-ravine-71862.herokuapp.com/profile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formState)
+      })
+
+        toggle();
+        setTimeout(()=> (navigate('/')),2000 )
+
+        
+    }
+
+    console.log(formState)
   return (
     <div>
       {/* <Text fontSize='6xl'><b>Login</b></Text> */}
@@ -61,16 +96,26 @@ function Login() {
 
           <Box mt={10} ml={20}>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <Flex direction='column' gap='30px' alignItems='left'>
 
                     <Input 
                     placeholder='Enter Name'
-                    width='400px'/>
+                    width='400px'
+                    value={formState.name}
+                    onChange={handleChange}
+                    name='name'
+                    type='text'
+                    />
 
                     <Input 
                     placeholder='Enter Password'
-                    width='400px'/>
+                    width='400px'
+                    value={formState.password}
+                    onChange={handleChange}
+                    name='password'
+                    type='password'
+                    />
                     
                     <Input 
                     type='submit'
@@ -84,7 +129,7 @@ function Login() {
           justifyContent='center' alignItems='center' mt={5}
           ><hr style={{ width:'40%', margin:'auto'}}></hr>or<hr style={{ width:'40%', margin:'auto' }}></hr></Flex>
         
-          Log in with
+          Log in / Sign up with
 
           <Box bg="grey.500" mt={10}>
             <Flex gap={5} justifyContent='center'>
