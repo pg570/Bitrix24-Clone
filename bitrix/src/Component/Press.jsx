@@ -3,8 +3,8 @@ import React from 'react'
 
 function Press() {
   return (
-    <div>
-        <Text fontSize='4xl'>Bitrix24 in the Press</Text>
+    <div >
+        <Text mt={10} fontSize='4xl'>Bitrix24 in the Press</Text>
 
         <SimpleGrid columns={[1,2,4,5]} ml='80px' >
             <Box>

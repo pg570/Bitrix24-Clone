@@ -6,18 +6,19 @@ import Navbar from '../Component/Navbar'
 import Much from '../Component/Much'
 import Premisehome from '../Component/Premisehome'
 import Press from '../Component/Press'
+import HeaderSlider from '../Component/HeaderSlider'
 
 function Home() {
   return (
     <div>
   
         <Navbar />
+        <HeaderSlider />
         <Cloud />
         <Much />
         <Press />
         <hr />
         <Premisehome />
-
         <Footer />
 
 
