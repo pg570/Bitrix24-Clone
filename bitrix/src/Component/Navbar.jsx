@@ -1,27 +1,29 @@
 import { Box, Button, Image, Text,  } from '@chakra-ui/react'
 import React from 'react'
-import { useContext } from 'react'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import { useState } from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../Context/AuthContext'
 import "../CSS/Navbar.css"
 
 function Navbar() {
 
-  const [user, setUser] = useState({});
-  const { isAuth } = useContext(AuthContext)
+ const {isAuth, toggle} = useContext(AuthContext)
+ const [name, setName] =useState("")
+ 
+ function getUser(){
+   fetch('https://damp-ravine-71862.herokuapp.com/profile').then(res => res.json())
+   .then(data => setName(data.name))
+   .catch(err => console.log(err))
+ }
+ 
+ 
+    setTimeout(getUser(),10000)
+ 
 
-  useEffect(()=>{
-    setTimeout(() => (getUser()) , 2000)  
-  },[])
+  
 
-  function getUser(){
-    fetch('https://damp-ravine-71862.herokuapp.com/profile').then(res=> res.json()).then((data) => setUser(data.name))
-  }
-
-  console.log(user)
-  console.log(isAuth)
 
   return (
     <div style={{
@@ -78,15 +80,38 @@ function Navbar() {
             </Link>
 
 
-          <Link to='/login'>
-            <Button
-            variant='ghost'
-            gap="8px"
-            >
-              <i class="fa-solid fa-user" color='black'></i> 
-              LOG IN
-               </Button>
-            </Link>
+          {
+            isAuth? 
+            <Link to='/login'>
+                <Button
+                variant='ghost'
+                gap="8px"
+                >
+                  <i class="fa-solid fa-user" color='black'></i> 
+                  LOG IN
+                </Button>
+              </Link>
+                :
+              <div style={{display:'flex', alignItems:'center' , gap:'10px'}}>
+
+                <Text as='b' color='green' _hover={{cursor:'pointer'}}><i class="fa-solid fa-user" color='black'></i>  {name}</Text>
+
+                <Button
+                onClick={toggle}
+                variant='outline'
+                gap="8px"
+                size='sm'
+                _hover={{backgroundColor:'red',color:'white'}}
+                >
+                  
+                  LOG OUT <i class="fa-solid fa-right-from-bracket"></i>
+                </Button>
+              </div>
+          }
+            
+           
+
+            
             
      
 

@@ -58,6 +58,7 @@ function Much() {
                     color='white'
                     borderRadius='30px'
                     p='0.5rem 1.25rem'
+                    _hover={{color:'black'}}
 
                     > REGISTER FREE</Button>
                 </Link>
@@ -126,6 +127,7 @@ function Much() {
                     color='white'
                     borderRadius='30px'
                     p='0.5rem 3rem'
+                    _hover={{color:'black'}}
 
                     > BUY</Button>
                 </Link>
@@ -196,7 +198,7 @@ function Much() {
                     color='white'
                     borderRadius='30px'
                     p='0.5rem 3rem'
-
+                    _hover={{color:'black'}}
                     > BUY</Button>
                 </Link>
                 
@@ -277,7 +279,7 @@ function Much() {
                     color='white'
                     borderRadius='30px'
                     p='0.5rem 3rem'
-
+                    _hover={{color:'black'}}
                     > BUY</Button>
                 </Link>
                 
@@ -370,7 +372,7 @@ function Much() {
                     color='white'
                     borderRadius='30px'
                     p='0.5rem 3rem'
-
+                    _hover={{color:'black'}}
                     > BUY</Button>
                 </Link>
                 

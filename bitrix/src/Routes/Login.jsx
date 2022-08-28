@@ -1,47 +1,47 @@
-import React, {  useContext, useState } from 'react'
+import React, { useState } from 'react'
 import 
-{ Box, Flex, Image, Input, Text} from "@chakra-ui/react"
-import { Link, useNavigate } from 'react-router-dom'
+{ Box, Button, Flex, Image, Input, Text} from "@chakra-ui/react"
+import { Link, Navigate } from 'react-router-dom'
 import { AuthContext } from '../Context/AuthContext';
+import { useContext } from 'react';
 
 function Login() {
+  const {isAuth, toggle} = useContext(AuthContext)
+  const [formState, setFormState] = useState({
+    name:'',
+    password:''
+  })
 
-  const {toggle}  = useContext(AuthContext);
-    const [formState, setFormState] = useState({
-        name: "",
-        password: ""
-      });
 
-      const navigate = useNavigate();
+  if(!isAuth){
+    return <Navigate to='/' />
+  }
 
-      function handleChange(e) {
-        const { name, value } = e.target;
-        setFormState({
-        ...formState,
-        [name]: value
-        });
-    }
+  function handleChange(e){
+    const {name, value}= e.target;
+    setFormState(
+      {
+        ...formState, [name]:value
+      }
+    )
+  }
 
-    function handleSubmit(e) {
-      e.preventDefault();
-      fetch("https://damp-ravine-71862.herokuapp.com/profile", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formState)
-      })
+  function handleSubmit(){
 
-        toggle();
-        setTimeout(()=> (navigate('/')),2000 )
+    fetch("https://damp-ravine-71862.herokuapp.com/profile", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formState)
+        })
 
-        
-    }
+        setTimeout(toggle(),10000)
+  }
 
-    console.log(formState)
   return (
     <div>
-      {/* <Text fontSize='6xl'><b>Login</b></Text> */}
+      
       
       <Box style={{display:'flex'}}>
         <Box bg='blue.300' p={4} w='40%' h='100vh'>
@@ -96,7 +96,7 @@ function Login() {
 
           <Box mt={10} ml={20}>
 
-            <form onSubmit={handleSubmit}>
+            <form>
                 <Flex direction='column' gap='30px' alignItems='left'>
 
                     <Input 
@@ -116,11 +116,14 @@ function Login() {
                     name='password'
                     type='password'
                     />
-                    
-                    <Input 
-                    type='submit'
+
+                    <Button 
+                    onClick={handleSubmit}
+                    _hover={{color:'black'}}
                     width='200px'
-                    bg='blue.300' color='white'/>
+                    bg='blue.300' color='white'>
+                    LOG IN</Button>
+
                 </Flex>
             </form>
           </Box>
