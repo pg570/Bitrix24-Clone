@@ -1,8 +1,73 @@
 import { Box, Button, Flex, Image, ListItem, Text, UnorderedList } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
+// import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 function HeaderSlider() {
+
+  const [x, setX] = useState(0)
+
+  let data=[
+    {
+      n1: 'Chats & video calls',
+      n2: ' Online meetings',
+      n3: 'Feed',
+      n4: 'Calendar',
+      n5: 'Online documents',
+      n6: 'Drive',
+      n7: 'Webmail',
+      n8: 'Workgroups',
+      src: 'https://www.bitrix24.in/upload/optimizer/converted/images/content_en/screens/main/header_banner/workspace.png.webp?1659420243000'
+    },
+    {
+      n1: 'START FOR FREE',
+      n2: ' Leads, Deals, Contacts',
+      n3: 'Quotes, Invoices',
+      n4: 'Online payments',
+      n5: 'Sales automation',
+      n6: 'Rules and triggers',
+      n7: 'Contact center',
+      n8: 'Marketing',
+      src: 'https://www.bitrix24.in/upload/optimizer/converted/images/content_en/screens/main/header_banner/crm.png.webp?1659420244000'
+    },
+    {
+      n1: 'Tasks',
+      n2: 'Projects',
+      n3: 'Gantt chart',
+      n4: 'Kanban board',
+      n5: 'Time tracking',
+      n6: 'Task and project templates',
+      n7: 'Task automation',
+      n8: 'CRM integration',
+      src: 'https://www.bitrix24.in/upload/optimizer/converted/images/content_en/screens/main/header_banner/tasks.png.webp?1659420246000'
+    },
+//     
+    {
+      n1: 'Free website builder',
+      n2: 'Online store',
+      n3: 'Free templates',
+      n4: 'Mobile & SEO friendly',
+      n5: 'Web forms',
+      n6: 'Web widgets',
+      n7: 'CRM integration',
+      n8: 'Google Analytics integration',
+      src:'https://www.bitrix24.in/upload/optimizer/converted/images/content_en/screens/main/header_banner/sites.png.webp?1659420247000'
+    },
+    {
+      n1: 'Employee directory',
+      n2: 'Worktime tracking & reports',
+      n3: 'Absence management',
+      n4: 'Announcements & appreciations',
+      n5: 'Workflow automation',
+      n6: 'Requests & approvals',
+      n7: 'No-code RPA',
+      n8: 'Knowledge base',
+      src:'https://www.bitrix24.in/upload/optimizer/converted/images/content_en/screens/main/header_banner/hr.png.webp?1659420249000'
+    }
+   
+  ]
+
+
   return (
     <Box h='auto' 
     p='53px 15px 44px'
@@ -18,14 +83,14 @@ function HeaderSlider() {
         >Bitrix24. Your ultimate workspace.</Text>
 
 
-        <Box w='70%' m='auto' mt={5}>
-          <Flex justifyContent='space-around ' gap={10}>
+        <Box w='70%' m='auto' mt={5} >
+          <Flex justifyContent='space-around' borderRadius={5} bg='blue.50' p={1} gap={10}>
             <Text
             fontSize='2xl'
             color='#0d6efd'
             fontWeight='500'
             cursor='pointer'
-            
+            onClick={()=> setX(0)}
             _hover={{color:'#0053AA', textDecoration:'underline'}}
 
             >Collaboration</Text>
@@ -35,7 +100,7 @@ function HeaderSlider() {
              color='#0d6efd'
              fontWeight='500'
              cursor='pointer'
-             
+             onClick={()=> setX(1)}
              _hover={{color:'#0053AA' ,textDecoration:'underline'}}
              >CRM</Text>
 
@@ -44,7 +109,7 @@ function HeaderSlider() {
              color='#0d6efd'
              fontWeight='500'
              cursor='pointer'
-             
+             onClick={()=> setX(2)}
              _hover={{color:'#0053AA',textDecoration:'underline'}}
              > Tasks & Projects</Text>
 
@@ -52,7 +117,7 @@ function HeaderSlider() {
             color='#0d6efd'
             fontWeight='500'
             cursor='pointer'
-            
+            onClick={()=> setX(3)}
             _hover={{color:'#0053AA',textDecoration:'underline'}}
             >Sites & Stores</Text>
 
@@ -60,40 +125,40 @@ function HeaderSlider() {
             color='#0d6efd'
             fontWeight='500'
             cursor='pointer'
-            
+            onClick={()=> setX(4)}
             _hover={{color:'#0053AA',textDecoration:'underline'}}
             >HR & Automation</Text>
           </Flex>
 
           <hr style={{marginTop:'20px'}}/>
 
-          <Flex mt={5}  justifyContent='space-around' gap='20px'>
+          <Flex mt={5}  justifyContent='space-around' gap='40px'>
             <Box p={5}>
                 <UnorderedList spacing={2}>
                   <ListItem 
                   fontFamily='Montserrat,"Helvetica Neue",Verdana,"Helvetica CY","Nimbus Sans L",sans-serif;'
-                  fontWeight='500' fontSize='1.25rem' textAlign='left'> Chats & video calls</ListItem>
+                  fontWeight='500' fontSize='1.25rem' textAlign='left'> {data[x].n1}</ListItem>
                   <ListItem 
                   fontFamily='Montserrat,"Helvetica Neue",Verdana,"Helvetica CY","Nimbus Sans L",sans-serif;'
-                  fontWeight='500' fontSize='1.25rem' textAlign='left'>Online meetings</ListItem>
+                  fontWeight='500' fontSize='1.25rem' textAlign='left'>{data[x].n2}</ListItem>
                   <ListItem 
                   fontFamily='Montserrat,"Helvetica Neue",Verdana,"Helvetica CY","Nimbus Sans L",sans-serif;'
-                  fontWeight='500' fontSize='1.25rem' textAlign='left'>Feed</ListItem>
+                  fontWeight='500' fontSize='1.25rem' textAlign='left'>{data[x].n3}</ListItem>
                   <ListItem 
                   fontFamily='Montserrat,"Helvetica Neue",Verdana,"Helvetica CY","Nimbus Sans L",sans-serif;'
-                  fontWeight='500' fontSize='1.25rem' textAlign='left'>Calendar</ListItem>
+                  fontWeight='500' fontSize='1.25rem' textAlign='left'>{data[x].n4}</ListItem>
                   <ListItem 
                   fontFamily='Montserrat,"Helvetica Neue",Verdana,"Helvetica CY","Nimbus Sans L",sans-serif;'
-                  fontWeight='500' fontSize='1.25rem' textAlign='left'>Online Documents</ListItem>
+                  fontWeight='500' fontSize='1.25rem' textAlign='left'>{data[x].n5}</ListItem>
                   <ListItem 
                   fontFamily='Montserrat,"Helvetica Neue",Verdana,"Helvetica CY","Nimbus Sans L",sans-serif;'
-                  fontWeight='500' fontSize='1.25rem' textAlign='left'>Drive</ListItem>
+                  fontWeight='500' fontSize='1.25rem' textAlign='left'>{data[x].n6}</ListItem>
                   <ListItem 
                   fontFamily='Montserrat,"Helvetica Neue",Verdana,"Helvetica CY","Nimbus Sans L",sans-serif;'
-                  fontWeight='500' fontSize='1.25rem' textAlign='left'>Webmail</ListItem>
+                  fontWeight='500' fontSize='1.25rem' textAlign='left'>{data[x].n7}</ListItem>
                   <ListItem 
                   fontFamily='Montserrat,"Helvetica Neue",Verdana,"Helvetica CY","Nimbus Sans L",sans-serif;'
-                  fontWeight='500' fontSize='1.25rem' textAlign='left'>Workgroups</ListItem>
+                  fontWeight='500' fontSize='1.25rem' textAlign='left'>{data[x].n8}</ListItem>
                 </UnorderedList>
 
 
@@ -114,7 +179,7 @@ function HeaderSlider() {
             </Box>
 
               <Box p={5}>
-                  <Image w='600px' src='https://www.bitrix24.in/upload/optimizer/converted/images/content_en/screens/main/header_banner/workspace.png.webp?1659420243000' />
+                  <Image w='600px' src={data[x].src} />
               </Box>
 
 
